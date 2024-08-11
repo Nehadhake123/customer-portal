@@ -85,31 +85,31 @@ const CustomerDetails: React.FC<CustomerDetailsProps> = ({ customer }) => {
 
   if (!customer) {
     return (
-      <div className="w-3/4 p-8 flex items-center justify-center bg-gray-50">
+      <div className="w-full p-8 flex items-center justify-center bg-gray-50">
         <p className="text-lg text-gray-600">Select a customer to view details.</p>
       </div>
     );
   }
 
   return (
-    <div className="w-full h-screen p-8 bg-gradient-to-r from-gray-50 to-white">
-      <div className="mx-20 flex flex-col">
-        <div className="mb-18">
-          <h2 className="text-4xl text-center font-extrabold text-gray-900 mb-6">{customer.name}</h2>
-          <h3 className="text-lg font-semibold text-gray-700 mb-5">{customer.desc}</h3>
+    <div className="w-full min-h-screen p-8 bg-gradient-to-r from-gray-50 to-white">
+      <div className="md:mx-10 sm:mx-2 max-w-6xl px-4">
+        <div className="mb-8 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">{customer.name}</h2>
+          <h3 className=" sm:text-sm md:text-xl font-semibold text-gray-700 mb-6">{customer.desc}</h3>
         </div>
         {error && (
           <div className="mb-6 p-4 bg-red-100 border border-red-300 text-red-800 rounded-lg shadow-md">
             <p>{error}</p>
           </div>
         )}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
           {shuffledPhotos.length > 0 && shuffledPhotos.map((photo, index) => (
             <div key={index} className="relative overflow-hidden rounded-lg shadow-lg">
               <img
                 src={photo}
                 alt={`photo ${index}`}
-                className="w-full h-64 object-fit"
+                className="w-full h-48 sm:h-56 md:h-64 lg:h-72 object-cover"
               />
             </div>
           ))}

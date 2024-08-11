@@ -5,6 +5,15 @@ module.exports = {
   ],
   theme: {
     extend: {
+      scrollbar: {
+        hide: {
+          'overflow-y': 'scroll',
+          '::-webkit-scrollbar': {
+            display: 'none'
+          },
+          'scrollbar-width': 'none'
+        }
+      },
       colors: {
         'primary': '#1a202c',
         'secondary': '#2d3748',
@@ -15,5 +24,7 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar') 
+  ]
 }

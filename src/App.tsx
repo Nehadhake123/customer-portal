@@ -40,21 +40,31 @@ const App: React.FC = () => {
   const selectedCustomer = customers.find(customer => customer.id === selectedCustomerId) || null;
 
   return (
-    <div className="flex h-screen bg-gray-100">
-      {loading ? (
-        <div className="flex items-center justify-center w-full h-full text-gray-700">Loading...</div>
-      ) : error ? (
-        <div className="flex items-center justify-center w-full h-full text-red-500">{error}</div>
-      ) : (
-        <>
-          <CustomerList
-            customers={customers}
-            selectedCustomerId={selectedCustomerId}
-            onSelectCustomer={setSelectedCustomerId}
-          />
-          <CustomerDetails customer={selectedCustomer} />
-        </>
-      )}
+    <div className="flex flex-col bg-gray-100">
+      <header className="bg-gradient-to-r from-teal-400 to-cyan-600 text-white p-3 text-center shadow-lg">
+        <h1 className="text-3xl font-bold leading-tight mb-2">
+          Customer Management System
+        </h1>
+        <p className="text-lg font-medium italic">
+          Manage your customers with ease and efficiency
+        </p>
+      </header>
+      <div className="flex flex-1">
+        {loading ? (
+          <div className="flex items-center justify-center w-full text-gray-700">Loading...</div>
+        ) : error ? (
+          <div className="flex items-center justify-center w-full text-red-500">{error}</div>
+        ) : (
+          <>
+            <CustomerList
+              customers={customers}
+              selectedCustomerId={selectedCustomerId}
+              onSelectCustomer={setSelectedCustomerId}
+            />
+            <CustomerDetails customer={selectedCustomer} />
+          </>
+        )}
+      </div>
     </div>
   );
 };
